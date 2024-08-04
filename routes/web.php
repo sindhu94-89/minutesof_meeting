@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\MOMController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,4 +27,13 @@ Route::get('/home',function(){
     //dd(Auth::User());
     echo 'Welcome '.Auth::user()->name;
 });
-Route::get('/dashboard',[AuthController::class,'dashboard']);
+Route::prefix('mom')->group(function(){
+    Route::get('/dashboard',[MOMController::class,'dashboard']);
+    Route::get('/createMom',[MOMController::class,'createMom']);
+    Route::post('/createMomPost',[MOMController::class,'createMomPost']);
+    Route::get('/editMOM/{id}',[MOMController::class,'editMOM']);
+    Route::post('/updateMOM', [MOMController::class,'updateMOM']);
+    Route::get('/deleteMOM/{id}',[MOMController::class,'deleteMOM']);
+});
+
+

@@ -16,7 +16,7 @@ class AuthController extends Controller
     }
     public function home(){
         if(Auth::user()){
-            return redirect('/dashboard');
+            return redirect('/mom/dashboard');
         }else{
             return redirect('/register');
         }
@@ -30,7 +30,7 @@ class AuthController extends Controller
     public function authenticateUser(Request $request){
         $credentials = $request->only('email','password');
         if(Auth::attempt($credentials)){ //checking the user's email and password.
-            return redirect('/dashboard');
+            return redirect('/mom/dashboard');
         }
         else{
             echo "The email and password not avilable. Please register your details.";
@@ -51,12 +51,13 @@ class AuthController extends Controller
         }
         //return view('register.userRegister')->with(['result' => $result]);
     }
-    public function dashboard(){
+    /*public function dashboard(){
         $username = 'Welcome '.Auth::user()->name;
         return view('mom.dashboard')->with('username',$username);
-    }
+    }*/
     public function logout(){
         Auth::logout();
         return redirect('/');
     }
+
 }
