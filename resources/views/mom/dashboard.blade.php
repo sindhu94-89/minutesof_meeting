@@ -8,12 +8,25 @@
 		  border: 1px solid black;
 		  border-radius: 10px;
 		}
+		.button-parent {
+		    text-align: right;
+		}
+
+		button {
+		    display: inline-block;
+		}
+
+
 	</style>
 	<title>Dashboard</title>
 </head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 <body>
-	<h4>Minutes of Meeting Dashboard</h4><h4 align="right">Welcome {{Auth::user()->name}}</h4>
-	<a href="{{url('/mom/createMom')}}"> <button type="button" class="btn btn-outline-primary float-right">Add New Minutes of Meeting</button></a><br/><br/>
+	<h4>Minutes of Meeting Dashboard</h4>
+	<a align="right" href="{{url('/logout')}}"> <button type="button" class="btn btn-secondary float-right">Logout</button></a><br/>
+	<h4 align="right">Welcome {{Auth::user()->name}}</h4><br/>
+	<a href="{{url('/mom/createMom')}}"> <button type="button" class="btn btn-secondary float-left">Add New Minutes of Meeting</button></a><br/><br/>
 	<table class="table">
 		<thead>
 			<th>Meeting Name</th>
