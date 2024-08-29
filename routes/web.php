@@ -13,7 +13,7 @@ use App\Http\Controllers\MOMController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/',[AuthController::class,'home']);
+Route::get('/',[AuthController::class,'home'])->name('login');
 
 Route::prefix('register')->group(function(){
     Route::get('/', [AuthController::class,'user_register']);
@@ -21,13 +21,13 @@ Route::prefix('register')->group(function(){
     Route::get('/login',[AuthController::class,'login']);
     Route::post('/loginPost',[AuthController::class,'authenticateUser']);
 });
-Route::get('/logout',[AuthController::class,'logout']);
+Route::get('/logout',[AuthController::class,'logout'])->name('logout');
 
 Route::get('/home',function(){
     //dd(Auth::User());
     echo 'Welcome '.Auth::user()->name;
 });
-Route::prefix('mom')->group(function(){
+Route::middleware('auth')->prefix('mom')->group(function(){
     Route::get('/dashboard',[MOMController::class,'dashboard']);
     Route::get('/createMom',[MOMController::class,'createMom']);
     Route::post('/createMomPost',[MOMController::class,'createMomPost']);
@@ -36,4 +36,4 @@ Route::prefix('mom')->group(function(){
     Route::get('/deleteMOM/{id}',[MOMController::class,'deleteMOM']);
 });
 
-
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

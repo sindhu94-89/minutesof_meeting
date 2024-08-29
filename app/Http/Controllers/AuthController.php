@@ -15,11 +15,12 @@ class AuthController extends Controller
 
     }
     public function home(){
-        if(Auth::user()){
+        return view('register.login');
+        /*if(Auth::user()){
             return redirect('/mom/dashboard');
         }else{
             return redirect('/register');
-        }
+        }*/
     }
     public function user_register(){
         return view('register.userRegister');
@@ -43,7 +44,7 @@ class AuthController extends Controller
         $validated = $request->validated();
         $result = $this->registrationModel->registerUser($request->all());
         if($result['status_code']==200){
-            return redirect('/dashboard');
+            return redirect('/mom/dashboard');
         }
         else{
             echo "The user already exits";

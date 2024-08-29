@@ -30,7 +30,6 @@ class UserFormRequest extends FormRequest
             /*'password' => 'required|Password::min(6)->mixedCase()->numbers()->symbols()->uncompromised()|confirmed',*/
             'password' => 'required|min:6|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\x])(?=.*[!@$#%]).*$/|confirmed',
             'address' => 'required',
-
         ];
     }
 }

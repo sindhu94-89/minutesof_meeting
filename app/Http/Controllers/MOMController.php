@@ -38,7 +38,7 @@ class MOMController extends Controller
     }
     public function updateMOM(createMOMRequest $request){
         $validated = $request->validated();
-        $result = $this->MOMModel->updateMOMPost($request->all());
+        $result = $this->MOMModel->updateMOMPost($request);
         /*if($result['status_code']==200){*/
             return redirect('/mom/dashboard');
         /*}*/
