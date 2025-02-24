@@ -17,16 +17,31 @@
 			</div>
 
 			<div class="form-row row">
-				<div class="form-group col-md-6">
+				<div class="form-group col-md-4">
 					<label for="date">Date</label>
 					<input type="date" class = "form-control" name = "meeting_date" value="{{old('meeting_date')}}">
 					@error('meeting_date')<div class="alert alert-danger">{{ $message }}</div>@enderror
 				</div>
 
-				<div class="form-group col-md-6">
-					<label for="tiem">Time</label>
-					<input type="time" class = "form-control" name = "meeting_time" value="{{old('meeting_time')}}">
-					@error('meeting_time')<div class="alert alert-danger">{{ $message }}</div>@enderror
+				<div class="form-group col-md-4">
+					<label for="tiem">Start Time</label>
+					<select name="start_time" id="start_time" class = "form-control">
+						<option value="">Select Start Time</option>
+						@foreach($hours as $hour)
+							<option @selected(old('start_time')==$hour)>{{$hour}}</option>
+						@endforeach
+					</select>
+					@error('start_time')<div class="alert alert-danger">{{ $message }}</div>@enderror
+				</div>
+				<div class="form-group col-md-4">
+					<label for="tiem">End Time</label>
+					<select name="end_time" id="end_time" class = "form-control">
+						<option value="">Select End Time</option>
+						@foreach($hours as $hour)
+							<option @selected(old('end_time')==$hour)>{{$hour}}</option>
+						@endforeach
+					</select>
+					@error('end_time')<div class="alert alert-danger">{{ $message }}</div>@enderror
 				</div>
 			</div>
 			<div  class="form-row row">

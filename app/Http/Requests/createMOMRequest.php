@@ -28,6 +28,10 @@ class createMOMRequest extends FormRequest
             /*'time' => 'required|after:1 hours',*/
              /*'start_time' => 'date_format:H:i',*/
             /*'meeting_time' => 'required|date_format:H:i',*/
+            'start_time' => 'required|before:end_time|date_format:H:i',
+            'end_time' => 'required|after:start_time|date_format:H:i',
+
+
             'image' => 'required|image|mimes:jpeg,jpg,png,gif,svg|max:2048',
         ];
     }

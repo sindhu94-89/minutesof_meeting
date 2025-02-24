@@ -7,6 +7,8 @@ use App\Http\Requests\createMOMRequest;
 use App\Models\MOMModel;
 use App\Models\minutesofmeeting;
 use Auth;
+use Carbon\Carbon;
+use Carbon\CarbonPeriod;
 
 
 class MOMController extends Controller
@@ -20,7 +22,16 @@ class MOMController extends Controller
         return view('mom.dashboard')->with('result',$result);
     }
     public function createMom(){
-        return view('mom.createMom');
+        $startPeriod = Carbon::parse('9:00');
+        $endPeriod   = Carbon::parse('18:00');
+         
+        $period = CarbonPeriod::create($startPeriod, '1 hour', $endPeriod);
+        $hours  = [];
+         
+        foreach ($period as $date) {
+            $hours[] = $date->format('H:i');
+        }
+        return view('mom.createMom',['hours'=>$hours]);
 
     }
     public function createMomPost(createMOMRequest $request){
@@ -46,6 +57,5 @@ class MOMController extends Controller
     public function deleteMOM($id){
         $result = $this->MOMModel->deleteactionMOM($id);
         return redirect('/mom/dashboard');
-
     }
 }

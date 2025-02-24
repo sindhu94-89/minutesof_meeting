@@ -16,7 +16,7 @@ class MOMModel extends Model
         $imageName = time().'.'.$image->extension();
         $image->move(public_path('images'), $imageName);
         $image_url = 'images/'.$imageName;
-        $data = ['meeting_name' => $request['meeting_name'],'description' => $request['description'], 'meeting_date' => $request['meeting_date'], 'meeting_time' => $request['meeting_time'], 'image_name' => $image_url
+        $data = ['meeting_name' => $request['meeting_name'],'description' => $request['description'], 'meeting_date' => $request['meeting_date'], 'start_time' => $request['start_time'], 'end_time' => $request['end_time'], 'image_name' => $image_url
         ];
         $user = minutesofmeeting::create($data);
         return ['status_code' => 200, 'message' => 'MOM created'];
@@ -37,7 +37,6 @@ class MOMModel extends Model
         $result->meeting_date = $request->meeting_date;
         /*$result->meeting_time = $request['meeting_time'];*/
         $result->summary = $request->summary;
-        
         $destination = public_path().'/'.$result->image_name;
         if (File::exists($destination)) {
             unlink($destination);

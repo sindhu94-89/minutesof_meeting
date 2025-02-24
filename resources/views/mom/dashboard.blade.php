@@ -29,7 +29,7 @@
 					<td>{{ $data->meeting_name }}</td>
 				    <td>{{ $data->description }}</td>
 				    <td>{{ $data->meeting_date }}</td>
-				    <td>{{ $data->meeting_time }}</td>
+				    <td>{{ $data->start_time }}</td>
 				    <td>{{ $data->summary }}</td>
 				    <td><img src="{{ asset($data->image_name) }}" class="img-fluid" alt="{{ $data->meeting_name }}" width="70px" height="40px"></td>
 				    <td><a href="/mom/editMOM/{{$data->id}}"><button type="button" class="btn btn-primary">Edit</button></a></td>

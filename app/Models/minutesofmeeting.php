@@ -14,7 +14,8 @@ class minutesofmeeting extends Model
         'meeting_name',
         'description',
         'meeting_date',
-        'meeting_time',
+        'start_time',
+        'end_time',
         'image_name',
     ];
     protected $dates = ['deleted_at'];
